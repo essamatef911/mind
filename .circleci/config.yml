@@ -225,10 +225,8 @@ jobs:
           root: ~/
           paths:
             - project/.circleci/ansible/inventory.txt
-      - destroy-environment
-      - notify_on_failure      
-
-  configure-infrastructure:
+      
+      configure-infrastructure:
     docker:
       - image:  mareimorsy/aws-node
     steps:
@@ -272,8 +270,8 @@ jobs:
             curl --insecure -d '1'  https://kvdb.io/rHHiyAHyXFsG4EDRPANWj/migration_${CIRCLE_WORKFLOW_ID:0:7}
             echo ${CIRCLE_WORKFLOW_ID:0:7}
             echo https://kvdb.io/rHHiyAHyXFsG4EDRPANWj
-      - destroy-environment
-      - revert-migrations
+      #- destroy-environment
+      #- revert-migrations
      # Here's where you will add some code to rollback on failure      
 
   deploy-frontend:
